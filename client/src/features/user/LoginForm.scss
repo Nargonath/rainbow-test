@@ -1,0 +1,19 @@
+.login-form {
+  &__header {
+    text-align: center;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__input {
+    display: block;
+  }
+
+  &__button {
+    margin-top: 1rem;
+  }
+}

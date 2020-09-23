@@ -1,0 +1,11 @@
+.header {
+  text-align: center;
+}
+
+.error {
+  border: 1px solid red;
+  background-color: #fca59f;
+  padding: 1rem;
+  width: 50%;
+  margin: auto;
+}

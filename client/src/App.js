@@ -3,6 +3,7 @@ import './App.css';
 
 import LoginForm from 'features/user/LoginForm';
 import LocalStorageUtils from 'utils/localStorage';
+import SearchUserForm from 'features/user/SearchUserForm';
 
 function App() {
   console.log('*** Welcome to Rainbow Web SDK Starter Kit for React ***');
@@ -29,6 +30,8 @@ function App() {
     }
   };
 
+  const onUserSelect = (recipientUser) => console.log(recipientUser);
+
   return (
     <div>
       <h1 className="header">Rainbow test</h1>
@@ -37,7 +40,18 @@ function App() {
         <p className="loading">Loading...</p>
       ) : !user ? (
         <LoginForm onLogin={onLogin} />
-      ) : null}
+      ) : (
+        <>
+          <h2 className="header">
+            Welcome {user.userData.firstName}{' '}
+            <span role="img" aria-label="wave hand">
+              👋
+            </span>
+          </h2>
+
+          <SearchUserForm onUserSelect={onUserSelect} />
+        </>
+      )}
 
       {errorMsg ? <div className="error">{errorMsg}</div> : null}
     </div>

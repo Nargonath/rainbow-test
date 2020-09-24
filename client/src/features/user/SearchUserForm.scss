@@ -1,0 +1,13 @@
+.user-search {
+  text-align: center;
+
+  &__suggestion {
+    list-style: none;
+    width: 50%;
+    margin: 1rem auto;
+
+    &__item {
+      border-top: 1px solid black;
+    }
+  }
+}

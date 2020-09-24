@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import rainbowSDK from 'rainbow-web-sdk';
 
 import LoginForm from 'features/user/LoginForm';
 import LocalStorageUtils from 'utils/localStorage';
@@ -17,7 +18,18 @@ function App() {
     try {
       const savedUser = LocalStorageUtils.get('user');
       setUser(savedUser);
-      setIsLoadingUser(false);
+
+      if (savedUser) {
+        rainbowSDK.connection
+          .signinSandBoxWithToken(savedUser.token)
+          .then(() => setIsLoadingUser(false))
+          .catch((error) => {
+            setErrorMsg(error.message);
+            setIsLoadingUser(false);
+          });
+      } else {
+        setIsLoadingUser(false);
+      }
     } catch (e) {
       setErrorMsg(`Erreur récupération données utilisateur : ${e.message}`);
     }

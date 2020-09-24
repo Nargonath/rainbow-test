@@ -4,12 +4,14 @@ import './App.css';
 import LoginForm from 'features/user/LoginForm';
 import LocalStorageUtils from 'utils/localStorage';
 import SearchUserForm from 'features/user/SearchUserForm';
+import Chat from 'features/chat/Chat';
 
 function App() {
   console.log('*** Welcome to Rainbow Web SDK Starter Kit for React ***');
   const [errorMsg, setErrorMsg] = React.useState('');
   const [isLoadingUser, setIsLoadingUser] = React.useState(true);
   const [user, setUser] = React.useState(null);
+  const [recipient, setRecipient] = React.useState(null);
 
   React.useEffect(() => {
     try {
@@ -30,7 +32,7 @@ function App() {
     }
   };
 
-  const onUserSelect = (recipientUser) => console.log(recipientUser);
+  const onUserSelect = (recipientUser) => setRecipient(recipientUser);
 
   return (
     <div>
@@ -49,7 +51,11 @@ function App() {
             </span>
           </h2>
 
-          <SearchUserForm onUserSelect={onUserSelect} />
+          {!recipient ? (
+            <SearchUserForm onUserSelect={onUserSelect} />
+          ) : (
+            <Chat contact={recipient} />
+          )}
         </>
       )}
 

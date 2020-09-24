@@ -1,0 +1,18 @@
+.chat {
+  width: 70%;
+  border: 1px solid black;
+  height: 400px;
+  margin: auto;
+
+  &__title {
+    text-align: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid black;
+  }
+
+  &__message {
+    border: 1px solid blue;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+}
